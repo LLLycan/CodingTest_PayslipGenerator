@@ -13,7 +13,7 @@ namespace CodingExercise.PayslipCalculator.Factory
     /// </summary>
     public class PayslipFactory
     {
-        public static IPayslipCalculator GetIncomeTaxType(string type)
+        public static IPayslipCalculator GetPayslipType(string type)
         {
             try
             {

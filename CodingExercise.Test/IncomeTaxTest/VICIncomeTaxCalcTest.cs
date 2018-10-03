@@ -19,78 +19,56 @@ namespace CodingExercise.Test.IncomeTaxTest
         }
 
         [TestMethod]
-        public void Non_Integer_Number_Should_RoundedUp_Or_RoundedDown()
+        [DataRow(1100.49, 1100)]
+        [DataRow(2555.51, 2556)]
+        [DataRow(12580.25, 12580)]
+        public void Non_Integer_Number_Should_RoundedUp_Or_RoundedDown(double number, int expectedResult)
         {
-            // Arrange
-            var firstExpected = 1100;
-            var secondExpected = 2556;
-            var thirdExpected = 12580;
-            
             // Act
-            var firstResult = RoundedToInt.Round(1100.49);
-            var secondResult = RoundedToInt.Round(2555.51);
-            var thirdResult = RoundedToInt.Round(12580.25);
+            var actualResult = RoundedToInt.Round(number);
 
             // Assert
-            Assert.AreEqual(firstExpected, firstResult);
-            Assert.AreEqual(secondExpected, secondResult);
-            Assert.AreEqual(thirdExpected, thirdResult);
+            Assert.AreEqual(expectedResult, actualResult);
         }
 
         [TestMethod]
-        public void Given_AnnualSalary_Return_Annually_IncomeTax()
+        [DataRow(18200, 0)]
+        [DataRow(18201, 0)]
+        [DataRow(37000, 3572)]
+        [DataRow(37001, 3572)]
+        [DataRow(87000, 19822)]
+        [DataRow(87001, 19822)]
+        [DataRow(180000, 54232)]
+        [DataRow(180001, 54232)]
+        [DataRow(60050, 11063)]
+        [DataRow(120000, 32032)]
+        public void Given_AnnualSalary_Return_Annually_IncomeTax(int annualSalary, int expectedResult)
         {
             // Act
-            var firstResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(18200));
-            var secondResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(18201));
-            var thirdResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(37000));
-            var fourthResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(37001));
-            var fivethResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(87000));
-            var sixthResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(87001));
-            var seventhResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(180000));
-            var eighthResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(180001));
-            var ninethResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(60050));
-            var tenthResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(120000));
+            var actualResult = _vicTaxCalc.CalculateIncomeTax(annualSalary);
 
             // Assert
-            Assert.AreEqual(firstResult, 0);
-            Assert.AreEqual(secondResult, 0);
-            Assert.AreEqual(thirdResult, 3572);
-            Assert.AreEqual(fourthResult, 3572);
-            Assert.AreEqual(fivethResult, 19822);
-            Assert.AreEqual(sixthResult, 19822);
-            Assert.AreEqual(seventhResult, 54232);
-            Assert.AreEqual(eighthResult, 54232);
-            Assert.AreEqual(ninethResult, 11063);
-            Assert.AreEqual(tenthResult, 32032);
+            Assert.AreEqual(expectedResult, actualResult);
         }
 
         [TestMethod]
-        public void Given_AnnualSalary_Return_Monthly_IncomeTax()
+        [DataRow(18200, 0)]
+        [DataRow(18201, 0)]
+        [DataRow(37000, 298)]
+        [DataRow(37001, 298)]
+        [DataRow(87000, 1652)]
+        [DataRow(87001, 1652)]
+        [DataRow(180000, 4519)]
+        [DataRow(180001, 4519)]
+        [DataRow(60050, 922)]
+        [DataRow(120000, 2669)]
+        public void Given_AnnualSalary_Return_Monthly_IncomeTax(int annualSalary, int expectedResult)
         {
             // Act
-            var firstResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(18200) / 12);
-            var secondResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(18201) / 12);
-            var thirdResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(37000) / 12);
-            var fourthResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(37001) / 12);
-            var fivethResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(87000) / 12);
-            var sixthResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(87001) / 12);
-            var seventhResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(180000) / 12);
-            var eighthResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(180001) / 12);
-            var ninethResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(60050) / 12);
-            var tenthResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(120000) / 12);
+            var actualResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(annualSalary) / 12d);
 
             // Assert
-            Assert.AreEqual(firstResult, 0);
-            Assert.AreEqual(secondResult, 0);
-            Assert.AreEqual(thirdResult, 298);
-            Assert.AreEqual(fourthResult, 298);
-            Assert.AreEqual(fivethResult, 1652);
-            Assert.AreEqual(sixthResult, 1652);
-            Assert.AreEqual(seventhResult, 4519);
-            Assert.AreEqual(eighthResult, 4519);
-            Assert.AreEqual(ninethResult, 922);
-            Assert.AreEqual(tenthResult, 2669);
+            Assert.AreEqual(expectedResult, actualResult);
         }
 
         [TestMethod]

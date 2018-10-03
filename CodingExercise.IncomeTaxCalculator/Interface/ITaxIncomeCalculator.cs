@@ -11,6 +11,6 @@ namespace CodingExercise.IncomeTaxCalculator.Interface
     /// </summary>
     public interface ITaxIncomeCalculator
     {
-        double CalculateIncomeTax(int annualSalary);
+        int CalculateIncomeTax(int annualSalary);
     }
 }

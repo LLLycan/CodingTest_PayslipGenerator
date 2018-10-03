@@ -16,7 +16,7 @@ namespace CodingExercise.IncomeTaxCalculator
         /// <summary>
         /// Calculation different based on annual salary
         /// </summary>
-        public double CalculateIncomeTax(int annualSalary)
+        public int CalculateIncomeTax(int annualSalary)
         {
             double incomeTax = 0;
 
@@ -45,7 +45,7 @@ namespace CodingExercise.IncomeTaxCalculator
                 incomeTax = 54232 + ((annualSalary - 180000) * 0.45);
             }
 
-            return incomeTax;
+            return RoundedToInt.Round(incomeTax);
         }
     }
 }
