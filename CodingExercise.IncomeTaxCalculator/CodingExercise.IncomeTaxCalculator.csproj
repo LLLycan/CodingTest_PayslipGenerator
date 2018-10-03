@@ -41,9 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factory\IncomeTaxFactory.cs" />
     <Compile Include="Interface\ITaxIncomeCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VICIncomeTaxCalculator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CodingExercise.PayslipEntity\CodingExercise.PayslipEntity.csproj">
+      <Project>{A5EEBDD1-A379-439C-BFF3-74AA49D82943}</Project>
+      <Name>CodingExercise.PayslipEntity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

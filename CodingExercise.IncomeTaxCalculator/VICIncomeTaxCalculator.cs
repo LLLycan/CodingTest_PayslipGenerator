@@ -1,4 +1,5 @@
 ﻿using CodingExercise.IncomeTaxCalculator.Interface;
+using CodingExercise.PayslipEntity.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,9 @@ namespace CodingExercise.IncomeTaxCalculator
         /// <summary>
         /// Calculation different based on annual salary
         /// </summary>
-        public int CalculateIncomeTax(int annualSalary)
+        public double CalculateIncomeTax(int annualSalary)
         {
-            int incomeTax = 0;
+            double incomeTax = 0;
 
             if (annualSalary <= 18200 && annualSalary > 0)
             {
@@ -26,33 +27,25 @@ namespace CodingExercise.IncomeTaxCalculator
 
             else if (annualSalary >= 18201 && annualSalary <= 37000)
             {
-                incomeTax = Round(((annualSalary - 18200) * 0.19) / 12);
+                incomeTax = (annualSalary - 18200) * 0.19;
             }
 
             else if (annualSalary >= 37001 && annualSalary <= 87000)
             {
-                incomeTax = Round((3572 + ((annualSalary - 37000) * 0.325)) / 12);
+                incomeTax = 3572 + ((annualSalary - 37000) * 0.325);
             }
 
             else if (annualSalary >= 87001 && annualSalary <= 180000)
             {
-                incomeTax = Round((19822 + ((annualSalary - 87000) * 0.37)) / 12);
+                incomeTax = 19822 + ((annualSalary - 87000) * 0.37);
             }
 
             else if (annualSalary >= 180001)
             {
-                incomeTax = Round((54232 + ((annualSalary - 180000) * 0.45)) / 12);
+                incomeTax = 54232 + ((annualSalary - 180000) * 0.45);
             }
 
             return incomeTax;
-        }
-
-        /// <summary>
-        /// Calculation results should be rounded to Integer value
-        /// </summary>
-        public int Round(double number)
-        {
-            return (int)Math.Round(number, MidpointRounding.AwayFromZero);
         }
     }
 }
