@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2003
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingExercise.PayslipGenerator", "CodingExercise.PayslipGenerator\CodingExercise.PayslipGenerator.csproj", "{D40C117B-937B-44C6-9034-15DF2B84F4F1}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingExercise.Test", "CodingExercise.Test\CodingExercise.Test.csproj", "{32CAFDA4-C01B-4F10-A128-8221142F6A49}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingExercise.IncomeTaxCalculator", "CodingExercise.IncomeTaxCalculator\CodingExercise.IncomeTaxCalculator.csproj", "{6133490C-8ACB-439B-BB93-49E24931E28A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingExercise.PayslipCalculator", "CodingExercise.PayslipCalculator\CodingExercise.PayslipCalculator.csproj", "{46BCBF73-521A-4EB5-97AA-8DEC51AB36F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{6133490C-8ACB-439B-BB93-49E24931E28A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6133490C-8ACB-439B-BB93-49E24931E28A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6133490C-8ACB-439B-BB93-49E24931E28A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46BCBF73-521A-4EB5-97AA-8DEC51AB36F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46BCBF73-521A-4EB5-97AA-8DEC51AB36F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46BCBF73-521A-4EB5-97AA-8DEC51AB36F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46BCBF73-521A-4EB5-97AA-8DEC51AB36F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

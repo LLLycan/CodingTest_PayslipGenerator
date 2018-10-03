@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="FileHandlerTest\CSVDataReaderTest.cs" />
     <Compile Include="IncomeTaxTest\VICIncomeTaxCalcTest.cs" />
+    <Compile Include="PayslipTest\MonthlyPayslipCalcTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +72,10 @@
       <Project>{6133490C-8ACB-439B-BB93-49E24931E28A}</Project>
       <Name>CodingExercise.IncomeTaxCalculator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CodingExercise.PayslipCalculator\CodingExercise.PayslipCalculator.csproj">
+      <Project>{46BCBF73-521A-4EB5-97AA-8DEC51AB36F4}</Project>
+      <Name>CodingExercise.PayslipCalculator</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CodingExercise.PayslipEntity\CodingExercise.PayslipEntity.csproj">
       <Project>{A5EEBDD1-A379-439C-BFF3-74AA49D82943}</Project>
       <Name>CodingExercise.PayslipEntity</Name>
@@ -79,6 +84,7 @@
   <ItemGroup>
     <Content Include="SampleFile\employees.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
