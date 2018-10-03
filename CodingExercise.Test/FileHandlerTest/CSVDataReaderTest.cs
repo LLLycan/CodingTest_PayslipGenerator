@@ -17,12 +17,12 @@ namespace CodingExercise.Test.FileHandlerTest
         }
 
         [TestMethod]
-        public void Given_A_Invalidated_FilePath_Throw_FileNotFoundException()
+        public void Given_An_Invalidated_FilePath_Throw_FileNotFoundException()
         {
             try
             {
                 // Arrange
-                string path = "";
+                string path = @"..\..\..\payslip.csv";
 
                 // Act
                 var result = _fileReader.Read(path);
@@ -85,7 +85,7 @@ namespace CodingExercise.Test.FileHandlerTest
         }
 
         [TestMethod]
-        public void Given_A_Invalidated_CsvLine_Throw_InvalidDataException()
+        public void Given_An_Invalidated_CsvLine_Throw_InvalidDataException()
         {
             try
             {

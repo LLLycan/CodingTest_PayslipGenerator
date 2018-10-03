@@ -24,15 +24,25 @@ namespace CodingExercise.FileHandler
 
             string[] csvData = null;
 
-
+            // Validate file path string null or empty
             if (string.IsNullOrEmpty(path))
             {
                 throw new FileNotFoundException();
             }
+
+            // Validate file exists or not 
+            else if (!File.Exists(path))
+            {
+                throw new FileNotFoundException();
+            }
+
+            // Validate file extension type 
             else if (Path.GetExtension(path) != ".csv")
             {
                 throw new InvalidDataException();
             }
+
+            // All good, start reading data 
             else
             {
                 csvData = File.ReadAllLines(path);
@@ -51,6 +61,7 @@ namespace CodingExercise.FileHandler
         /// </summary>
         public Employee Map(string[] strs)
         {
+            // Mapping data to Employee object
             try
             {
                 return new Employee
