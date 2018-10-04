@@ -12,7 +12,7 @@ namespace CodingExercise.PayslipCalculator.Interface
     /// </summary>
     public interface IPayslipCalculator
     {
-        Payslip GeneratePaySlip(Employee employee, string incomeTaxCalculateType);
+        List<Payslip> GeneratePaySlip(List<Employee> employee, string incomeTaxCalculateType);
 
         int CalculateGrossIncome(int annualSalary);
 

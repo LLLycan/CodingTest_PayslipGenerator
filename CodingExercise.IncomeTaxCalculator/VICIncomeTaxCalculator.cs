@@ -1,5 +1,5 @@
 ﻿using CodingExercise.IncomeTaxCalculator.Interface;
-using CodingExercise.PayslipEntity.Extension;
+using CodingExercise.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +45,7 @@ namespace CodingExercise.IncomeTaxCalculator
                 incomeTax = 54232 + ((annualSalary - 180000) * 0.45);
             }
 
-            return RoundedToInt.Round(incomeTax);
+            return NumberUtils.Round(incomeTax);
         }
     }
 }

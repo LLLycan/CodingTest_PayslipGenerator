@@ -76,9 +76,13 @@
       <Project>{46BCBF73-521A-4EB5-97AA-8DEC51AB36F4}</Project>
       <Name>CodingExercise.PayslipCalculator</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CodingExercise.PayslipEntity\CodingExercise.PayslipEntity.csproj">
+    <ProjectReference Include="..\CodingExercise.PayslipEntity\CodingExercise.Entities.csproj">
       <Project>{A5EEBDD1-A379-439C-BFF3-74AA49D82943}</Project>
-      <Name>CodingExercise.PayslipEntity</Name>
+      <Name>CodingExercise.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodingExercise.Utilities\CodingExercise.Utilities.csproj">
+      <Project>{A8FC6CEB-C2E1-482C-BE0A-B4441E05D01E}</Project>
+      <Name>CodingExercise.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -4,6 +4,7 @@ using CodingExercise.PayslipCalculator;
 using CodingExercise.PayslipCalculator.Interface;
 using CodingExercise.PayslipCalculator.Factory;
 using CodingExercise.PayslipEntity.Core;
+using System.Collections.Generic;
 
 namespace CodingExercise.Test.PayslipTest
 {
@@ -68,7 +69,7 @@ namespace CodingExercise.Test.PayslipTest
         }
 
         [TestMethod]
-        public void Given_A_Validate_PayslipCalculatorType_Should_Create_Correct_TypeOfInstance()
+        public void Given_A_Validated_PayslipCalculatorType_Should_Create_Correct_TypeOfInstance()
         {
             // Arrange
             var payslipType = PayslipFactory.GetPayslipType("MonthlyPayslipCalculator");
@@ -78,7 +79,7 @@ namespace CodingExercise.Test.PayslipTest
         }
 
         [TestMethod]
-        public void Given_An_Invalidate_PayslipCalculatorType_Should_Throw_Exception()
+        public void Given_An_Invalidated_PayslipCalculatorType_Should_Throw_Exception()
         {
             try
             {
@@ -93,40 +94,44 @@ namespace CodingExercise.Test.PayslipTest
         }
 
         [TestMethod]
-        public void Given_An_EmployeeObj_And_IncomeTaxCalculateType_Return_PayslipObj()
+        public void Given_EmployeesList_And_IncomeTaxCalculateType_Return_PayslipList()
         {
             // Arrange
-            var employee = new Employee
+            var employees = new List<Employee>()
             {
-                FirstName = "David",
-                LastName = "Rudd",
-                AnnualSalary = 60050,
-                SuperRate = 9,
-                PayPeriod = "01 March-31 March"
+                new Employee {
+                    FirstName = "David",
+                    LastName = "Rudd",
+                    AnnualSalary = 60050,
+                    SuperRate = 9,
+                    PayPeriod = "01 March-31 March"
+                }
             };
             var incomeTaxCalculateType = "VICIncomeTaxCalculator";
 
             // Expected
-            var payslip = new Payslip
+            var payslips = new List<Payslip>
             {
-                Name = "David Rudd",
-                PayPeriod = "01 March-31 March",
-                GrossIncome = 5004,
-                IncomeTax = 922,
-                NetIncome = 4082,
-                Super = 450
+                new Payslip{
+                    Name = "David Rudd",
+                    PayPeriod = "01 March-31 March",
+                    GrossIncome = 5004,
+                    IncomeTax = 922,
+                    NetIncome = 4082,
+                    Super = 450
+                }
             };
 
             // Act
-            var actualResult = _monthlyPayslipCalc.GeneratePaySlip(employee,incomeTaxCalculateType);
+            var actualResult = _monthlyPayslipCalc.GeneratePaySlip(employees,incomeTaxCalculateType);
 
             // Assert
-            Assert.AreEqual(payslip.Name, actualResult.Name);
-            Assert.AreEqual(payslip.PayPeriod, actualResult.PayPeriod);
-            Assert.AreEqual(payslip.GrossIncome, actualResult.GrossIncome);
-            Assert.AreEqual(payslip.IncomeTax, actualResult.IncomeTax);
-            Assert.AreEqual(payslip.NetIncome, actualResult.NetIncome);
-            Assert.AreEqual(payslip.Super, actualResult.Super);
+            Assert.AreEqual(payslips[0].Name, actualResult[0].Name);
+            Assert.AreEqual(payslips[0].PayPeriod, actualResult[0].PayPeriod);
+            Assert.AreEqual(payslips[0].GrossIncome, actualResult[0].GrossIncome);
+            Assert.AreEqual(payslips[0].IncomeTax, actualResult[0].IncomeTax);
+            Assert.AreEqual(payslips[0].NetIncome, actualResult[0].NetIncome);
+            Assert.AreEqual(payslips[0].Super, actualResult[0].Super);
         }
     }
 }

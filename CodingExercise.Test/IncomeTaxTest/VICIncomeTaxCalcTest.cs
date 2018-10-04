@@ -1,9 +1,9 @@
 ﻿using System;
 using CodingExercise.IncomeTaxCalculator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CodingExercise.PayslipEntity.Extension;
 using CodingExercise.IncomeTaxCalculator.Factory;
 using CodingExercise.IncomeTaxCalculator.Interface;
+using CodingExercise.Utilities;
 
 namespace CodingExercise.Test.IncomeTaxTest
 {
@@ -25,7 +25,7 @@ namespace CodingExercise.Test.IncomeTaxTest
         public void Non_Integer_Number_Should_RoundedUp_Or_RoundedDown(double number, int expectedResult)
         {
             // Act
-            var actualResult = RoundedToInt.Round(number);
+            var actualResult = NumberUtils.Round(number);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
@@ -65,7 +65,7 @@ namespace CodingExercise.Test.IncomeTaxTest
         public void Given_AnnualSalary_Return_Monthly_IncomeTax(int annualSalary, int expectedResult)
         {
             // Act
-            var actualResult = RoundedToInt.Round(_vicTaxCalc.CalculateIncomeTax(annualSalary) / 12d);
+            var actualResult = _vicTaxCalc.CalculateIncomeTax(annualSalary).ToMonthly();
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);

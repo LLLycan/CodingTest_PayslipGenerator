@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingExercise.PayslipGenerator", "CodingExercise.PayslipGenerator\CodingExercise.PayslipGenerator.csproj", "{D40C117B-937B-44C6-9034-15DF2B84F4F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingExercise.UI", "CodingExercise.PayslipGenerator\CodingExercise.UI.csproj", "{D40C117B-937B-44C6-9034-15DF2B84F4F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingExercise.PayslipEntity", "CodingExercise.PayslipEntity\CodingExercise.PayslipEntity.csproj", "{A5EEBDD1-A379-439C-BFF3-74AA49D82943}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingExercise.Entities", "CodingExercise.PayslipEntity\CodingExercise.Entities.csproj", "{A5EEBDD1-A379-439C-BFF3-74AA49D82943}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingExercise.FileHandler", "CodingExercise.FileHandler\CodingExercise.FileHandler.csproj", "{F86A6B0C-242B-4F3A-B9DD-B323051B95B0}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingExercise.IncomeTaxCalculator", "CodingExercise.IncomeTaxCalculator\CodingExercise.IncomeTaxCalculator.csproj", "{6133490C-8ACB-439B-BB93-49E24931E28A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingExercise.PayslipCalculator", "CodingExercise.PayslipCalculator\CodingExercise.PayslipCalculator.csproj", "{46BCBF73-521A-4EB5-97AA-8DEC51AB36F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingExercise.Utilities", "CodingExercise.Utilities\CodingExercise.Utilities.csproj", "{A8FC6CEB-C2E1-482C-BE0A-B4441E05D01E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{46BCBF73-521A-4EB5-97AA-8DEC51AB36F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46BCBF73-521A-4EB5-97AA-8DEC51AB36F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46BCBF73-521A-4EB5-97AA-8DEC51AB36F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8FC6CEB-C2E1-482C-BE0A-B4441E05D01E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8FC6CEB-C2E1-482C-BE0A-B4441E05D01E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8FC6CEB-C2E1-482C-BE0A-B4441E05D01E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8FC6CEB-C2E1-482C-BE0A-B4441E05D01E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

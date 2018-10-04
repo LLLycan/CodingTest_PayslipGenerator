@@ -46,9 +46,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CodingExercise.PayslipEntity\CodingExercise.PayslipEntity.csproj">
+    <ProjectReference Include="..\CodingExercise.PayslipEntity\CodingExercise.Entities.csproj">
       <Project>{A5EEBDD1-A379-439C-BFF3-74AA49D82943}</Project>
-      <Name>CodingExercise.PayslipEntity</Name>
+      <Name>CodingExercise.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

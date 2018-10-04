@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CodingExercise.PayslipEntity.Core;
-using CodingExercise.PayslipEntity.Extension;
 using CodingExercise.IncomeTaxCalculator.Factory;
+using CodingExercise.Utilities;
 
 namespace CodingExercise.PayslipCalculator
 {
@@ -17,14 +17,14 @@ namespace CodingExercise.PayslipCalculator
     {
         public int CalculateGrossIncome(int annualSalary)
         {
-            return RoundedToInt.Round(annualSalary / 12d);
+            return NumberUtils.Round(annualSalary.ToMonthly());
         }
 
         public int CalculateIncomeTax(int annualSalary, string incomeTaxCalculateType)
         {
             var incomeTaxCalcType = IncomeTaxFactory.GetIncomeTaxType(incomeTaxCalculateType);
 
-            return RoundedToInt.Round(incomeTaxCalcType.CalculateIncomeTax(annualSalary) / 12d);
+            return NumberUtils.Round(incomeTaxCalcType.CalculateIncomeTax(annualSalary).ToMonthly());
         }
 
         public int CalculateNetIncome(int grossIncome, int incomeTax)
@@ -34,26 +34,31 @@ namespace CodingExercise.PayslipCalculator
 
         public int CalculateSuper(int grossIncome, int superRate)
         {
-            return RoundedToInt.Round((double)grossIncome * superRate / 100);
+            return NumberUtils.Round((double)grossIncome * superRate / 100);
         }
 
-        public Payslip GeneratePaySlip(Employee employee, string incomeTaxCalculateType)
+        public List<Payslip> GeneratePaySlip(List<Employee> employees, string incomeTaxCalculateType)
         {
-            Payslip payslip = new Payslip();
+            var payslips = new List<Payslip>();
 
-            payslip.Name = employee.FirstName + " " + employee.LastName;
+            foreach (var employee in employees)
+            {
+                var _fullName = employee.FirstName + " " + employee.LastName;
+                var _grossIncome = CalculateGrossIncome(employee.AnnualSalary);
+                var _incomeTax = CalculateIncomeTax(employee.AnnualSalary, incomeTaxCalculateType);
+                var _netIncome = CalculateNetIncome(_grossIncome, _incomeTax);
+                var _super = CalculateSuper(_grossIncome, employee.SuperRate);
 
-            payslip.PayPeriod = employee.PayPeriod;
-
-            payslip.GrossIncome = CalculateGrossIncome(employee.AnnualSalary);
-
-            payslip.IncomeTax = CalculateIncomeTax(employee.AnnualSalary, incomeTaxCalculateType);
-
-            payslip.NetIncome = CalculateNetIncome(payslip.GrossIncome, payslip.IncomeTax);
-
-            payslip.Super = CalculateSuper(payslip.GrossIncome, employee.SuperRate);
-
-            return payslip;
+                payslips.Add(new Payslip {
+                    Name = _fullName,
+                    PayPeriod = employee.PayPeriod,
+                    GrossIncome = _grossIncome,
+                    IncomeTax = _incomeTax,
+                    NetIncome = _netIncome,
+                    Super = _super
+                });
+            }
+            return payslips;
         }
     }
 }
