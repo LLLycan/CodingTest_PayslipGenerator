@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CodingExercise.PayslipEntity.Core;
 using CodingExercise.IncomeTaxCalculator.Factory;
 using CodingExercise.Utilities;
+using CodingExercise.IncomeTaxCalculator;
 
 namespace CodingExercise.PayslipCalculator
 {
@@ -15,16 +16,22 @@ namespace CodingExercise.PayslipCalculator
     /// </summary>
     public class MonthlyPayslipCalculator : IPayslipCalculator
     {
+        TaxIncomeCalculator taxCalculator = new TaxIncomeCalculator();
+
         public int CalculateGrossIncome(int annualSalary)
         {
             return NumberUtils.Round(annualSalary.ToMonthly());
         }
 
-        public int CalculateIncomeTax(int annualSalary, string incomeTaxCalculateType)
+        public int CalculateIncomeTax(int annualSalary)
         {
-            var incomeTaxCalcType = IncomeTaxFactory.GetIncomeTaxType(incomeTaxCalculateType);
+            //var incomeTaxCalcType = IncomeTaxFactory.GetIncomeTaxType(incomeTaxCalculateType);
 
-            return NumberUtils.Round(incomeTaxCalcType.CalculateIncomeTax(annualSalary).ToMonthly());
+            var taxBracket = taxCalculator.GetTaxBracket(annualSalary);
+
+            var incomeTax = taxCalculator.CalculateIncomeTax(annualSalary, taxBracket);
+
+            return NumberUtils.Round(incomeTax);
         }
 
         public int CalculateNetIncome(int grossIncome, int incomeTax)
@@ -37,7 +44,7 @@ namespace CodingExercise.PayslipCalculator
             return NumberUtils.Round((double)grossIncome * superRate / 100);
         }
 
-        public List<Payslip> GeneratePaySlip(List<Employee> employees, string incomeTaxCalculateType)
+        public List<Payslip> GeneratePaySlip(List<Employee> employees)
         {
             var payslips = new List<Payslip>();
 
@@ -45,7 +52,7 @@ namespace CodingExercise.PayslipCalculator
             {
                 var _fullName = employee.FirstName + " " + employee.LastName;
                 var _grossIncome = CalculateGrossIncome(employee.AnnualSalary);
-                var _incomeTax = CalculateIncomeTax(employee.AnnualSalary, incomeTaxCalculateType);
+                var _incomeTax = CalculateIncomeTax(employee.AnnualSalary);
                 var _netIncome = CalculateNetIncome(_grossIncome, _incomeTax);
                 var _super = CalculateSuper(_grossIncome, employee.SuperRate);
 

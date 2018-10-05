@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D40C117B-937B-44C6-9034-15DF2B84F4F1}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>CodingExercise.PayslipGenerator</RootNamespace>
-    <AssemblyName>CodingExercise.PayslipGenerator</AssemblyName>
+    <ProjectGuid>{6133490C-8ACB-439B-BB93-49E24931E28A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CodingExercise.IncomeTaxCalculator</RootNamespace>
+    <AssemblyName>CodingExercise.IncomeTaxCalculator</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,14 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,36 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PayslipForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PayslipForm.Designer.cs">
-      <DependentUpon>PayslipForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Factory\IncomeTaxFactory.cs" />
+    <Compile Include="Interface\ITaxIncomeCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaxBracket.cs" />
+    <Compile Include="TaxIncomeCalculator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CodingExercise.FileHandler\CodingExercise.FileHandler.csproj">
-      <Project>{F86A6B0C-242B-4F3A-B9DD-B323051B95B0}</Project>
-      <Name>CodingExercise.FileHandler</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CodingExercise.PayslipCalculator\CodingExercise.PayslipCalculator.csproj">
-      <Project>{46BCBF73-521A-4EB5-97AA-8DEC51AB36F4}</Project>
-      <Name>CodingExercise.PayslipCalculator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CodingExercise.PayslipEntity\CodingExercise.Entities.csproj">
+    <ProjectReference Include="..\CodingExercise.PayslipEntity\MYOB.CodingExercise.Entities.csproj">
       <Project>{A5EEBDD1-A379-439C-BFF3-74AA49D82943}</Project>
-      <Name>CodingExercise.Entities</Name>
+      <Name>MYOB.CodingExercise.Entities</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="PayslipForm.resx">
-      <DependentUpon>PayslipForm.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\CodingExercise.Utilities\MYOB.CodingExercise.Utilities.csproj">
+      <Project>{A8FC6CEB-C2E1-482C-BE0A-B4441E05D01E}</Project>
+      <Name>MYOB.CodingExercise.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -32,12 +32,12 @@ namespace CodingExercise.Test.PayslipTest
         }
 
         [TestMethod]
-        [DataRow(60050, "VICIncomeTaxCalculator", 922)]
-        [DataRow(120000, "VICIncomeTaxCalculator", 2669)]
-        public void Given_Annualsalary_And_IncomeTaxCalculatorType_Return_Monthly_IncomeTax(int annualSalary, string incomeTaxType, int expectedResult)
+        [DataRow(60050, 922)]
+        [DataRow(120000, 2669)]
+        public void Given_Annualsalary_And_IncomeTaxCalculatorType_Return_Monthly_IncomeTax(int annualSalary, int expectedResult)
         {
             // Act
-            var actualResult = _monthlyPayslipCalc.CalculateIncomeTax(annualSalary, incomeTaxType);
+            var actualResult = _monthlyPayslipCalc.CalculateIncomeTax(annualSalary);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
@@ -107,7 +107,6 @@ namespace CodingExercise.Test.PayslipTest
                     PayPeriod = "01 March-31 March"
                 }
             };
-            var incomeTaxCalculateType = "VICIncomeTaxCalculator";
 
             // Expected
             var payslips = new List<Payslip>
@@ -123,7 +122,7 @@ namespace CodingExercise.Test.PayslipTest
             };
 
             // Act
-            var actualResult = _monthlyPayslipCalc.GeneratePaySlip(employees,incomeTaxCalculateType);
+            var actualResult = _monthlyPayslipCalc.GeneratePaySlip(employees);
 
             // Assert
             Assert.AreEqual(payslips[0].Name, actualResult[0].Name);

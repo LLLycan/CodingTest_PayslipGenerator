@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 namespace CodingExercise.PayslipCalculator.Interface
 {
     /// <summary>
-    /// Interface for payslip calculator with future extension like monthly,weekly...
+    /// Interface for payslip calculator
     /// </summary>
     public interface IPayslipCalculator
     {
-        List<Payslip> GeneratePaySlip(List<Employee> employee, string incomeTaxCalculateType);
+        List<Payslip> GeneratePaySlip(List<Employee> employee);
 
         int CalculateGrossIncome(int annualSalary);
 
-        int CalculateIncomeTax(int annualSalary, string incomeTaxCalculateType);
+        int CalculateIncomeTax(int annualSalary);
 
         int CalculateNetIncome(int grossIncome, int incomeTax);
 
