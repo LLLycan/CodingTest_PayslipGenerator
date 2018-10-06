@@ -41,7 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CSVFileProcessor.cs" />
+    <Compile Include="CsvFileProcessor.cs" />
+    <Compile Include="Factory\FileProcessorFactory.cs" />
     <Compile Include="Interface\IFileProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

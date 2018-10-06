@@ -1,12 +1,8 @@
-﻿using CodingExercise.PayslipCalculator.Interface;
+﻿using CodingExercise.IncomeTaxCalculator;
+using CodingExercise.PayslipCalculator.Interface;
+using CodingExercise.PayslipEntity.Core;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CodingExercise.PayslipEntity.Core;
-using CodingExercise.IncomeTaxCalculator.Factory;
-using CodingExercise.IncomeTaxCalculator;
 
 namespace CodingExercise.PayslipCalculator
 {
@@ -24,8 +20,6 @@ namespace CodingExercise.PayslipCalculator
 
         public int CalculateIncomeTax(decimal annualSalary)
         {
-            //var incomeTaxCalcType = IncomeTaxFactory.GetIncomeTaxType(incomeTaxCalculateType);
-
             var taxBracket = taxCalculator.GetTaxBracket(annualSalary);
 
             var incomeTax = taxCalculator.CalculateIncomeTax(annualSalary, taxBracket);
@@ -40,7 +34,7 @@ namespace CodingExercise.PayslipCalculator
 
         public int CalculateSuper(decimal grossIncome, decimal superRate)
         {
-            return Round((decimal)grossIncome * superRate / 100);
+            return Round(grossIncome * superRate / 100);
         }
 
         public List<Payslip> GeneratePaySlip(List<Employee> employees)

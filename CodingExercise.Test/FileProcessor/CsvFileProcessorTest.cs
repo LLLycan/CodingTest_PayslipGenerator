@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using CodingExercise.FileHandler;
+using CodingExercise.FileHandler.Factory;
+using CodingExercise.FileHandler.Interface;
 using CodingExercise.PayslipCalculator;
 using CodingExercise.PayslipEntity.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -11,14 +13,24 @@ namespace CodingExercise.Test.FileHandlerTest
     [TestClass]
     public class CSVFileProcessorTest
     {
-        CSVFileProcessor _fileProcessor;
+        CsvFileProcessor _fileProcessor;
         MonthlyPayslipCalculator _payslipCalc;
 
         [TestInitialize]
         public void Initialize()
         {
-            _fileProcessor = new CSVFileProcessor();
+            _fileProcessor = new CsvFileProcessor();
             _payslipCalc = new MonthlyPayslipCalculator();
+        }
+
+        [TestMethod]
+        public void Given_A_FileProcessorType_Should_Create_Correct_Instance()
+        {
+            // Arrange
+            var fileProcessorType = FileProcessorFactory.GetFileProcessorType("CsvFileProcessor");
+
+            // Assert
+            Assert.IsInstanceOfType(fileProcessorType, typeof(IFileProcessor));
         }
 
         [TestMethod]
@@ -123,22 +135,6 @@ namespace CodingExercise.Test.FileHandlerTest
             };
 
             _fileProcessor.Write(payslips);
-
-            var result = _fileProcessor.Read(@"..\..\..\Demo Data\output\payslip.csv");
-
-            // Assert
-            Assert.AreEqual(result[0].FirstName, "David Rudd");
-        }
-
-        [TestMethod]
-        public void Given_()
-        {
-            // Arrange
-            var employeeList = _fileProcessor.Read(@"..\..\..\Demo Data\Input\employees.csv");
-
-            var payslipList = _payslipCalc.GeneratePaySlip(employeeList);
-
-            _fileProcessor.Write(payslipList);
 
             var result = _fileProcessor.Read(@"..\..\..\Demo Data\output\payslip.csv");
 

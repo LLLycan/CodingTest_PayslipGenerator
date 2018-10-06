@@ -3,17 +3,14 @@ using CodingExercise.PayslipEntity.Core;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace CodingExercise.FileHandler
 {
     /// <summary>
     /// Sealed class only for .csv File I/O
     /// </summary>
-    public sealed class CSVFileProcessor : IFileProcessor
+    public sealed class CsvFileProcessor : IFileProcessor
     {
         private const string outputPath = @"..\..\..\Demo Data\output\payslip.csv";
         /// <summary>
@@ -26,24 +23,10 @@ namespace CodingExercise.FileHandler
             string[] csvData = null;
 
             // Validate file path string null or empty
-            if (string.IsNullOrEmpty(path))
+            if (string.IsNullOrEmpty(path) || !File.Exists(path))
             {
                 throw new FileNotFoundException();
             }
-
-            // Validate file exists or not 
-            else if (!File.Exists(path))
-            {
-                throw new FileNotFoundException();
-            }
-
-            // Validate file extension type 
-            else if (Path.GetExtension(path) != ".csv")
-            {
-                throw new InvalidDataException();
-            }
-
-            // All good, start reading data 
             else
             {
                 csvData = File.ReadAllLines(path);

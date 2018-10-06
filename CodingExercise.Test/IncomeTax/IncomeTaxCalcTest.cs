@@ -1,8 +1,5 @@
-﻿using System;
-using CodingExercise.IncomeTaxCalculator;
+﻿using CodingExercise.IncomeTaxCalculator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CodingExercise.IncomeTaxCalculator.Factory;
-using CodingExercise.IncomeTaxCalculator.Interface;
 
 namespace CodingExercise.Test.IncomeTaxTest
 {

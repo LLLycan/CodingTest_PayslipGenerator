@@ -20,6 +20,16 @@ namespace CodingExercise.Test.PayslipTest
         }
 
         [TestMethod]
+        public void Given_A_PayslipCalculatorType_Should_Create_Correct_Instance()
+        {
+            // Arrange
+            var payslipType = PayslipFactory.GetPayslipType("MonthlyPayslipCalculator");
+
+            // Assert
+            Assert.IsInstanceOfType(payslipType, typeof(IPayslipCalculator));
+        }
+
+        [TestMethod]
         [DataRow(60050, 5004)]
         [DataRow(77000, 6417)]
         public void Given_An_Annualsalary_Return_Monthly_GrossIncome(double annualSalary, int expectedResult)

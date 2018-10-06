@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MYOB.CodingExercise.App", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MYOB.CodingExercise.Entities", "CodingExercise.PayslipEntity\MYOB.CodingExercise.Entities.csproj", "{A5EEBDD1-A379-439C-BFF3-74AA49D82943}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MYOB.CodingExercise.FileHandler", "CodingExercise.FileHandler\MYOB.CodingExercise.FileHandler.csproj", "{F86A6B0C-242B-4F3A-B9DD-B323051B95B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MYOB.CodingExercise.FileProcessor", "CodingExercise.FileHandler\MYOB.CodingExercise.FileProcessor.csproj", "{F86A6B0C-242B-4F3A-B9DD-B323051B95B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MYOB.CodingExercise.Test", "CodingExercise.Test\MYOB.CodingExercise.Test.csproj", "{32CAFDA4-C01B-4F10-A128-8221142F6A49}"
 EndProject

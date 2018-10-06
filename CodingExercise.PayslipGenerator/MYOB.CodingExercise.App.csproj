@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D40C117B-937B-44C6-9034-15DF2B84F4F1}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>CodingExercise.PayslipGenerator</RootNamespace>
     <AssemblyName>CodingExercise.PayslipGenerator</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -55,9 +56,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CodingExercise.FileHandler\MYOB.CodingExercise.FileHandler.csproj">
+    <ProjectReference Include="..\CodingExercise.FileHandler\MYOB.CodingExercise.FileProcessor.csproj">
       <Project>{F86A6B0C-242B-4F3A-B9DD-B323051B95B0}</Project>
-      <Name>MYOB.CodingExercise.FileHandler</Name>
+      <Name>MYOB.CodingExercise.FileProcessor</Name>
     </ProjectReference>
     <ProjectReference Include="..\CodingExercise.PayslipCalculator\MYOB.CodingExercise.PayslipCalculator.csproj">
       <Project>{46BCBF73-521A-4EB5-97AA-8DEC51AB36F4}</Project>
