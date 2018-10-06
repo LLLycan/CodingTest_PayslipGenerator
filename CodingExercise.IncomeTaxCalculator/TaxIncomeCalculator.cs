@@ -53,9 +53,9 @@ namespace CodingExercise.IncomeTaxCalculator
         }
 
         // calculate income tax based on salary and tax bracket
-        public int CalculateIncomeTax(decimal annualSalary, TaxBracket taxBracket)
+        public decimal CalculateIncomeTax(decimal annualSalary, TaxBracket taxBracket)
         {
-            var incomeTax = (taxBracket.TaxSurplus + (annualSalary - taxBracket.MinSalary - 1) * (taxBracket.TaxRate / 100)) / 12;
+            var incomeTax = (taxBracket.TaxSurplus + (annualSalary - taxBracket.MinSalary - 1) * (taxBracket.TaxRate / 100));
             return Round(incomeTax);
         }
 

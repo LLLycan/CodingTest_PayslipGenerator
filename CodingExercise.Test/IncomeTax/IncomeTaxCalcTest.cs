@@ -44,7 +44,7 @@ namespace CodingExercise.Test.IncomeTaxTest
             var taxBracket = _taxCalc.GetTaxBracket(annualSalary);
 
             // Act
-            var actualResult = _taxCalc.CalculateIncomeTax(annualSalary, taxBracket);
+            var actualResult = _taxCalc.Round(_taxCalc.CalculateIncomeTax(annualSalary, taxBracket) / 12);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);

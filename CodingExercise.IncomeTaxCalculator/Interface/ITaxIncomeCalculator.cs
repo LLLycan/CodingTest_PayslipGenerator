@@ -11,7 +11,7 @@ namespace CodingExercise.IncomeTaxCalculator.Interface
     /// </summary>
     public interface ITaxIncomeCalculator
     {
-        int CalculateIncomeTax(decimal annualSalary, TaxBracket taxBracket);
+        decimal CalculateIncomeTax(decimal annualSalary, TaxBracket taxBracket);
 
         TaxBracket GetTaxBracket(decimal salary);
     }

@@ -22,7 +22,7 @@ namespace CodingExercise.PayslipCalculator
         {
             var taxBracket = taxCalculator.GetTaxBracket(annualSalary);
 
-            var incomeTax = taxCalculator.CalculateIncomeTax(annualSalary, taxBracket);
+            var incomeTax = taxCalculator.CalculateIncomeTax(annualSalary, taxBracket) / 12;
 
             return Round(incomeTax);
         }
