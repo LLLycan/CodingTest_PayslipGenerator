@@ -14,12 +14,12 @@ namespace CodingExercise.PayslipCalculator.Interface
     {
         List<Payslip> GeneratePaySlip(List<Employee> employee);
 
-        int CalculateGrossIncome(int annualSalary);
+        int CalculateGrossIncome(decimal annualSalary);
 
-        int CalculateIncomeTax(int annualSalary);
+        int CalculateIncomeTax(decimal annualSalary);
 
-        int CalculateNetIncome(int grossIncome, int incomeTax);
+        int CalculateNetIncome(decimal grossIncome, decimal incomeTax);
 
-        int CalculateSuper(int grossIncome, int superRate);
+        int CalculateSuper(decimal grossIncome, decimal superRate);
     }
 }

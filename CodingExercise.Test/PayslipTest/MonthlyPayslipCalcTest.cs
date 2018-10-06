@@ -22,10 +22,10 @@ namespace CodingExercise.Test.PayslipTest
         [TestMethod]
         [DataRow(60050, 5004)]
         [DataRow(77000, 6417)]
-        public void Given_An_Annualsalary_Return_Monthly_GrossIncome(int annualSalary, int expectedResult)
+        public void Given_An_Annualsalary_Return_Monthly_GrossIncome(double annualSalary, int expectedResult)
         {
             // Act
-            var actualResult = _monthlyPayslipCalc.CalculateGrossIncome(annualSalary);
+            var actualResult = _monthlyPayslipCalc.CalculateGrossIncome((decimal)annualSalary);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
@@ -34,10 +34,10 @@ namespace CodingExercise.Test.PayslipTest
         [TestMethod]
         [DataRow(60050, 922)]
         [DataRow(120000, 2669)]
-        public void Given_Annualsalary_And_IncomeTaxCalculatorType_Return_Monthly_IncomeTax(int annualSalary, int expectedResult)
+        public void Given_Annualsalary_And_IncomeTaxCalculatorType_Return_Monthly_IncomeTax(double annualSalary, int expectedResult)
         {
             // Act
-            var actualResult = _monthlyPayslipCalc.CalculateIncomeTax(annualSalary);
+            var actualResult = _monthlyPayslipCalc.CalculateIncomeTax((decimal)annualSalary);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
@@ -46,10 +46,10 @@ namespace CodingExercise.Test.PayslipTest
         [TestMethod]
         [DataRow(5004, 922, 4082)]
         [DataRow(10000, 2669, 7331)]
-        public void Given_GrossIncome_And_IncomeTax_Return_NetIncome(int grossIncome, int incomeTax, int expectedResult)
+        public void Given_GrossIncome_And_IncomeTax_Return_NetIncome(double grossIncome, double incomeTax, int expectedResult)
         {
             // Act
-            var actualResult = _monthlyPayslipCalc.CalculateNetIncome(grossIncome, incomeTax);
+            var actualResult = _monthlyPayslipCalc.CalculateNetIncome((decimal)grossIncome, (decimal)incomeTax);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
@@ -59,10 +59,10 @@ namespace CodingExercise.Test.PayslipTest
         [DataRow(5004, 9, 450)]
         [DataRow(10000, 10, 1000)]
         [DataRow(7230, 9, 651)]
-        public void Given_GrossIncome_And_SuperRate_Return_Super(int grossIncome, int superRate, int expectedResult)
+        public void Given_GrossIncome_And_SuperRate_Return_Super(double grossIncome, double superRate, int expectedResult)
         {
             // Arrange
-            var actualResult = _monthlyPayslipCalc.CalculateSuper(grossIncome, superRate);
+            var actualResult = _monthlyPayslipCalc.CalculateSuper((decimal)grossIncome, (decimal)superRate);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);

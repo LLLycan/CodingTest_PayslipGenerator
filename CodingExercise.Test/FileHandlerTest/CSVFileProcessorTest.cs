@@ -1,19 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using CodingExercise.FileHandler;
+using CodingExercise.PayslipCalculator;
+using CodingExercise.PayslipEntity.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CodingExercise.Test.FileHandlerTest
 {
     [TestClass]
-    public class CSVDataReaderTest
+    public class CSVFileProcessorTest
     {
-        CSVFileReader _fileReader;
+        CSVFileProcessor _fileProcessor;
+        MonthlyPayslipCalculator _payslipCalc;
 
         [TestInitialize]
         public void Initialize()
         {
-            _fileReader = new CSVFileReader();
+            _fileProcessor = new CSVFileProcessor();
+            _payslipCalc = new MonthlyPayslipCalculator();
         }
 
         [TestMethod]
@@ -22,10 +27,10 @@ namespace CodingExercise.Test.FileHandlerTest
             try
             {
                 // Arrange
-                string path = @"..\..\..\payslip.csv";
+                string path = @"..\..\..\Demo Data\input\employees_wrong.csv";
 
                 // Act
-                var result = _fileReader.Read(path);
+                var result = _fileProcessor.Read(path);
             }
             catch (Exception e)
             {
@@ -37,10 +42,10 @@ namespace CodingExercise.Test.FileHandlerTest
         public void Given_A_Validated_File_Return_Correct_Object()
         {
             // Arrange
-            string path = @"..\..\..\employees.csv";
+            string path = @"..\..\..\Demo Data\input\employees.csv";
 
             // Act
-            var result = _fileReader.Read(path);
+            var result = _fileProcessor.Read(path);
 
             // Assert
             Assert.AreEqual(result[0].FirstName, "David");
@@ -56,10 +61,10 @@ namespace CodingExercise.Test.FileHandlerTest
             try
             {
                 // Arrange
-                string path = @"..\..\..\employees.txt";
+                string path = @"..\..\..\Demo Data\input\employees.txt";
 
                 // Act
-                var result = _fileReader.Read(path);
+                var result = _fileProcessor.Read(path);
             }
             catch (Exception e)
             {
@@ -74,7 +79,7 @@ namespace CodingExercise.Test.FileHandlerTest
             string[] csvLine = new string[] { "David", "Rudd", "60050", "9%", "01 March-31 March" };
 
             // Act
-            var result = _fileReader.Map(csvLine);
+            var result = _fileProcessor.Map(csvLine);
 
             // Assert
             Assert.AreEqual(result.FirstName, "David");
@@ -93,12 +98,52 @@ namespace CodingExercise.Test.FileHandlerTest
                 string[] csvLine = new string[] { "David", "Rudd", "60050#", "9x%", "01 March-31 March" };
 
                 // Act
-                var result = _fileReader.Map(csvLine);
+                var result = _fileProcessor.Map(csvLine);
             }
             catch (Exception e)
             {
                 Assert.IsTrue(e is InvalidDataException);
             }
+        }
+
+        [TestMethod]
+        public void Given_A_List_Of_Payslips_Should_Be_WriteAsCSV()
+        {
+            // Arrange
+            var payslips = new List<Payslip>
+            {
+                new Payslip{
+                    Name = "David Rudd",
+                    PayPeriod = "01 March-31 March",
+                    GrossIncome = 5004,
+                    IncomeTax = 922,
+                    NetIncome = 4082,
+                    Super = 450
+                }
+            };
+
+            _fileProcessor.Write(payslips);
+
+            var result = _fileProcessor.Read(@"..\..\..\Demo Data\output\payslip.csv");
+
+            // Assert
+            Assert.AreEqual(result[0].FirstName, "David Rudd");
+        }
+
+        [TestMethod]
+        public void Given_()
+        {
+            // Arrange
+            var employeeList = _fileProcessor.Read(@"..\..\..\Demo Data\Input\employees.csv");
+
+            var payslipList = _payslipCalc.GeneratePaySlip(employeeList);
+
+            _fileProcessor.Write(payslipList);
+
+            var result = _fileProcessor.Read(@"..\..\..\Demo Data\output\payslip.csv");
+
+            // Assert
+            Assert.AreEqual(result[0].FirstName, "David Rudd");
         }
     }
 }

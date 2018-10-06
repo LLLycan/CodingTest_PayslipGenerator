@@ -3,7 +3,6 @@ using CodingExercise.IncomeTaxCalculator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CodingExercise.IncomeTaxCalculator.Factory;
 using CodingExercise.IncomeTaxCalculator.Interface;
-using CodingExercise.Utilities;
 
 namespace CodingExercise.Test.IncomeTaxTest
 {
@@ -25,7 +24,7 @@ namespace CodingExercise.Test.IncomeTaxTest
         public void Non_Integer_Number_Should_RoundedUp_Or_RoundedDown(double number, int expectedResult)
         {
             // Act
-            var actualResult = NumberUtils.Round(number);
+            var actualResult = _taxCalc.Round((decimal)number);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
@@ -54,29 +53,25 @@ namespace CodingExercise.Test.IncomeTaxTest
             Assert.AreEqual(expectedResult, actualResult);
         }
 
-        //[TestMethod]
-        //public void Given_A_Validate_IncomeTaxCalculatorType_Should_Create_Correct_TypeOfInstance()
-        //{
-        //    // Arrange
-        //    var incomeTaxType = IncomeTaxFactory.GetIncomeTaxType("VICIncomeTaxCalculator");
+        [TestMethod]
+        [DataRow(18200, 0)]
+        [DataRow(18201, 0)]
+        [DataRow(37000, 0)]
+        [DataRow(37001, 3572)]
+        [DataRow(87000, 3572)]
+        [DataRow(87001, 19822)]
+        [DataRow(180000, 19822)]
+        [DataRow(180001, 54232)]
+        public void Given_AnnualSalary_Return_Correct_TaxBracketSurplus(int annualSalary, int expectedResult)
+        {
+            // Arrange
+            var taxBracket = _taxCalc.GetTaxBracket(annualSalary);
 
-        //    // Assert
-        //    Assert.IsInstanceOfType(incomeTaxType, typeof(ITaxIncomeCalculator));
-        //}
+            // Act 
+            var actualResult = (int)taxBracket.TaxSurplus;
 
-        //[TestMethod]
-        //public void Given_An_Invalidate_IncomeTaxCalculatorType_Should_Throw_Exception()
-        //{
-        //    try
-        //    {
-        //        // Arrange
-        //        var incomeTaxType = IncomeTaxFactory.GetIncomeTaxType("NSWIncomeTaxCalculator");
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        // Assert
-        //        Assert.AreEqual("Cannot find validated income tax calculation type.", e.Message);
-        //    }           
-        //}
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }

@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CSVFileReader.cs" />
-    <Compile Include="Interface\IFileReader.cs" />
+    <Compile Include="CSVFileProcessor.cs" />
+    <Compile Include="Interface\IFileProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

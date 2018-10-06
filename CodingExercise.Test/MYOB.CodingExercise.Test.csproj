@@ -54,14 +54,13 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileHandlerTest\CSVDataReaderTest.cs" />
+    <Compile Include="FileHandlerTest\CSVFileProcessorTest.cs" />
     <Compile Include="IncomeTaxTest\IncomeTaxCalcTest.cs" />
     <Compile Include="PayslipTest\MonthlyPayslipCalcTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="SampleFile\employees.csv" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CodingExercise.FileHandler\MYOB.CodingExercise.FileHandler.csproj">
@@ -80,13 +79,6 @@
       <Project>{A5EEBDD1-A379-439C-BFF3-74AA49D82943}</Project>
       <Name>MYOB.CodingExercise.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CodingExercise.Utilities\MYOB.CodingExercise.Utilities.csproj">
-      <Project>{A8FC6CEB-C2E1-482C-BE0A-B4441E05D01E}</Project>
-      <Name>MYOB.CodingExercise.Utilities</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SampleFile\employees.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

@@ -14,9 +14,6 @@ namespace CodingExercise.PayslipGenerator
     {
         public static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PayslipForm());
             //try
             //{
             //    Console.WriteLine("Ready to processing file...");

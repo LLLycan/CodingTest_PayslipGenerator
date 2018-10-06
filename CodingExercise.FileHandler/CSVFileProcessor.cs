@@ -13,8 +13,9 @@ namespace CodingExercise.FileHandler
     /// <summary>
     /// Sealed class only for .csv File I/O
     /// </summary>
-    public sealed class CSVFileReader : IFileReader
+    public sealed class CSVFileProcessor : IFileProcessor
     {
+        private const string outputPath = @"..\..\..\Demo Data\output\payslip.csv";
         /// <summary>
         /// Given a file path, read & return as Employee list
         /// </summary>
@@ -61,7 +62,6 @@ namespace CodingExercise.FileHandler
         /// </summary>
         public Employee Map(string[] strs)
         {
-            // Mapping data to Employee object
             try
             {
                 return new Employee
@@ -76,6 +76,20 @@ namespace CodingExercise.FileHandler
             catch (Exception)
             {
                 throw new InvalidDataException();
+            }
+        }
+
+        /// <summary>
+        /// Write payslip into .csv file
+        /// </summary>
+        public void Write(List<Payslip> payslips)
+        {
+            using (StreamWriter outputFile = new StreamWriter(outputPath))
+            {
+                foreach (var p in payslips)
+                {
+                    outputFile.WriteLine($"{p.Name},{p.PayPeriod},{p.GrossIncome},{p.IncomeTax},{p.NetIncome},{p.Super}");
+                }
             }
         }
     }

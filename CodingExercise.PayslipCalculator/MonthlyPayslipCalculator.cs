@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using CodingExercise.PayslipEntity.Core;
 using CodingExercise.IncomeTaxCalculator.Factory;
-using CodingExercise.Utilities;
 using CodingExercise.IncomeTaxCalculator;
 
 namespace CodingExercise.PayslipCalculator
@@ -18,12 +17,12 @@ namespace CodingExercise.PayslipCalculator
     {
         TaxIncomeCalculator taxCalculator = new TaxIncomeCalculator();
 
-        public int CalculateGrossIncome(int annualSalary)
+        public int CalculateGrossIncome(decimal annualSalary)
         {
-            return NumberUtils.Round(annualSalary.ToMonthly());
+            return Round(annualSalary / 12);
         }
 
-        public int CalculateIncomeTax(int annualSalary)
+        public int CalculateIncomeTax(decimal annualSalary)
         {
             //var incomeTaxCalcType = IncomeTaxFactory.GetIncomeTaxType(incomeTaxCalculateType);
 
@@ -31,17 +30,17 @@ namespace CodingExercise.PayslipCalculator
 
             var incomeTax = taxCalculator.CalculateIncomeTax(annualSalary, taxBracket);
 
-            return NumberUtils.Round(incomeTax);
+            return Round(incomeTax);
         }
 
-        public int CalculateNetIncome(int grossIncome, int incomeTax)
+        public int CalculateNetIncome(decimal grossIncome, decimal incomeTax)
         {
-            return grossIncome - incomeTax;
+            return Round(grossIncome - incomeTax);
         }
 
-        public int CalculateSuper(int grossIncome, int superRate)
+        public int CalculateSuper(decimal grossIncome, decimal superRate)
         {
-            return NumberUtils.Round((double)grossIncome * superRate / 100);
+            return Round((decimal)grossIncome * superRate / 100);
         }
 
         public List<Payslip> GeneratePaySlip(List<Employee> employees)
@@ -66,6 +65,12 @@ namespace CodingExercise.PayslipCalculator
                 });
             }
             return payslips;
+        }
+
+        // rounded up/down
+        public int Round(decimal number)
+        {
+            return (int)Math.Round(number, MidpointRounding.AwayFromZero);
         }
     }
 }

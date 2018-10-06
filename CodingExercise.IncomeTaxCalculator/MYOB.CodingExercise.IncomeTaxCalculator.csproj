@@ -52,10 +52,6 @@
       <Project>{A5EEBDD1-A379-439C-BFF3-74AA49D82943}</Project>
       <Name>MYOB.CodingExercise.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CodingExercise.Utilities\MYOB.CodingExercise.Utilities.csproj">
-      <Project>{A8FC6CEB-C2E1-482C-BE0A-B4441E05D01E}</Project>
-      <Name>MYOB.CodingExercise.Utilities</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
