@@ -45,7 +45,7 @@ until all logic running properly.
 
 # Project Running Instruction:
 1. Download from Yuxuan Li's github repositorie: https://github.com/LLLycan/CodingTest_PayslipGenerator
-2. Demo input file is '~/Demo Data/Input/employees.csv', and output file is '~/Demo Data/Output/payslip.csv'
+2. Demo sample input file in:'~/Demo Data/Input/employees.csv', and output file in:'~/Demo Data/Output/payslip.csv'
 3. UnZip project, and open with Visual Studio
 4. Choose 'MYOB.CodingExercise.App' and set as startup project
 5. Clean, build and run solution
