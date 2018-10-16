@@ -49,6 +49,13 @@ namespace CodingExercise.Test.FileHandlerTest
                 Assert.AreEqual("Cannot find correct file processor type.", e.Message);
             }
         }
+        [TestMethod]
+        [ExpectedException(typeof(Exception), "Cannot find correct file processor type.")]
+        public void Given_An_Invalid_TxtFileProcessorType_Should_Throw_Exception()
+        {
+            // Arrange
+            var fileProcessorType = FileProcessorFactory.GetFileProcessorType("TxtFileProcessor");
+        }
 
         [TestMethod]
         public void Given_An_Invalid_FilePath_Throw_FileNotFoundException()

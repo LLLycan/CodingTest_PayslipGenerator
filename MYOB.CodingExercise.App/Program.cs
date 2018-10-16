@@ -19,7 +19,7 @@ namespace CodingExercise.PayslipGenerator
                 var payslipCalculator = PayslipFactory.GetPayslipType(ConfigurationManager.AppSettings["PayslipCalculator"]);
                 var payslipList = payslipCalculator.GeneratePaySlip(fileProcessor.Read(ConfigurationManager.AppSettings["FileInputPath"]));
                 fileProcessor.Write(payslipList);
-                Console.WriteLine("Success! Payslip in: ~/Demo Data/Output/payslip.csv");
+                Console.WriteLine("Payslip generate success in: ~/Demo Data/Output/payslip.csv");
             }
             catch (FileNotFoundException)
             {
